@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="ethoairline-test-suite.xml" />
+	<flow name="ethoairline-test-suiteFlow" doc:id="17f57f9b-a1e5-4b73-b4bc-4d8bc662256c" >
+		<munit:set-event doc:name="Set Event" doc:id="cf139451-a465-4574-bec3-644fba137dec" />
+	</flow>
+	<munit:test name="ethoairline-test-suite-ethoairline-mainTest" doc:id="68e19570-2f04-45b4-931c-10b6dc8cfb54" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to ethoairline-main" doc:id="7d0e563a-b409-419e-be57-3cd38c3c2a9e" name="ethoairline-main"/>
+		</munit:execution>
+		<munit:validation >
+			<munit-tools:assert-that doc:name="Assert that" doc:id="05f0d0e7-57fe-481c-a11c-98de2d46e40d" is="#[MunitTools::equalTo('response_payload_1')]" expression="#[payload]"/>
+		</munit:validation>
+	</munit:test>
+
+
+</mule>
